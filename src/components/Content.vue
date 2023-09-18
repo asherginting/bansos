@@ -9,35 +9,29 @@
           <label for="nama">Nama</label>
           <input type="text" id="nama" v-model="formData.nama" class="form-control" required />
         </div>
-
         <div class="form-group">
           <label for="nik">NIK</label>
           <input type="number" id="nik" v-model="formData.nik" class="form-control" required />
         </div>
-
         <div class="form-group">
           <label for="noKartuKeluarga">Nomor Kartu Keluarga</label>
           <input type="text" id="noKartuKeluarga" v-model="formData.noKartuKeluarga" class="form-control" required />
         </div>
-
         <div class="form-group">
           <label for="fotoKTP">Foto KTP</label>
           <input type="file" id="fotoKTP" accept="image/jpeg, image/png, image/bmp" @change="validateFile" class="form-control" required style="color: black;" />
           <small class="text-muted" style="color: black;">Maksimal 2MB, format JPG/JPEG/PNG/BMP</small>
         </div>
-
         <div class="form-group">
           <label for="fotoKK">Foto Kartu Keluarga</label>
           <input type="file" id="fotoKK" accept="image/jpeg, image/png, image/bmp" @change="validateFile" class="form-control" required style="color: black;" />
           <small class="text-muted" style="color: black;">Maksimal 2MB, format JPG/JPEG/PNG/BMP</small>
         </div>
-
         <div class="form-group">
           <label for="umur">Umur</label>
           <input type="number" id="umur" v-model="formData.umur" class="form-control" required />
           <small class="text-muted" style="color: black;">Berumur lebih dari atau sama dengan 25 tahun</small>
         </div>
-
         <div class="form-group">
           <label for="jenisKelamin">Jenis Kelamin</label>
           <select id="jenisKelamin" v-model="formData.jenisKelamin" class="form-control" required>
@@ -45,7 +39,6 @@
             <option value="Perempuan">Perempuan</option>
           </select>
         </div>
-
         <div class="form-group">
           <label for="provinsi">Provinsi</label>
           <select id="provinsi" v-model="formData.provinsi" class="form-control" required @change="loadKabKota">
@@ -53,7 +46,6 @@
             <option v-for="provinsi in provinsiList" :key="provinsi.id" :value="provinsi.id">{{ provinsi.name }}</option>
           </select>
         </div>
-
         <div class="form-group">
           <label for="kabKota">Kab/Kota</label>
           <select id="kabKota" v-model="formData.kabKota" class="form-control" required @change="loadKecamatan">
@@ -61,7 +53,6 @@
             <option v-for="kabKota in kabKotaList" :key="kabKota.id" :value="kabKota.id">{{ kabKota.name }}</option>
           </select>
         </div>
-
         <div class="form-group">
           <label for="kecamatan">Kecamatan</label>
           <select id="kecamatan" v-model="formData.kecamatan" class="form-control" required @change="loadKelurahanDesa">
@@ -69,7 +60,6 @@
             <option v-for="kecamatan in kecamatanList" :key="kecamatan.id" :value="kecamatan.id">{{ kecamatan.name }}</option>
           </select>
         </div>
-
         <div class="form-group">
           <label for="kelurahanDesa">Kelurahan/Desa</label>
           <select id="kelurahanDesa" v-model="formData.kelurahanDesa" class="form-control" required>
@@ -77,32 +67,26 @@
             <option v-for="kelurahanDesa in kelurahanDesaList" :key="kelurahanDesa.id" :value="kelurahanDesa.id">{{ kelurahanDesa.name }}</option>
           </select>
         </div>
-
         <div class="form-group">
           <label for="alamat">Alamat</label>
           <input type="text" id="alamat" v-model="formData.alamat" class="form-control" required maxlength="255" />
         </div>
-
         <div class="form-group">
           <label for="rt">RT</label>
           <input type="number" id="rt" v-model="formData.rt" class="form-control" />
         </div>
-
         <div class="form-group">
           <label for="rw">RW</label>
           <input type="number" id="rw" v-model="formData.rw" class="form-control" />
         </div>
-
         <div class="form-group">
           <label for="penghasilanSebelumPandemi">Penghasilan sebelum pandemi</label>
           <input type="number" id="penghasilanSebelumPandemi" v-model="formData.penghasilanSebelumPandemi" class="form-control" required />
         </div>
-
         <div class="form-group">
           <label for="penghasilanSetelahPandemi">Penghasilan setelah pandemi</label>
           <input type="number" id="penghasilanSetelahPandemi" v-model="formData.penghasilanSetelahPandemi" class="form-control" required />
         </div>
-
         <div class="form-group">
           <label for="alasanBantuan">Alasan membutuhkan bantuan</label>
           <select id="alasanBantuan" v-model="formData.alasanBantuan" class="form-control" required>
@@ -113,14 +97,12 @@
           </select>
           <input v-if="formData.alasanBantuan === 'Lainnya'" type="text" v-model="formData.alasanLainnya" class="form-control mt-2" placeholder="Lainnya: ..." required style="margin-top: 15px;" />
         </div>
-
         <div class="form-check">
           <input type="checkbox" id="persetujuan" v-model="formData.persetujuan" class="form-check-input" required />
           <label class="form-check-label" for="persetujuan" style="color: black; font-size: 13px; margin-left: 5px;">Saya menyatakan bahwa data yang diisikan adalah benar dan siap mempertanggungjawabkan apabila ditemukan ketidaksesuaian dalam data tersebut.</label>
         </div>
-
         <button type="submit" class="btn btn-primary" style="margin-top: 10px;">
-          {{ submitting ? 'Mengirim...' : 'Submit' }}
+          {{ submitting ? 'Loading...' : 'Submit' }}
         </button>
       </form>
 
@@ -130,94 +112,75 @@
             <div class="custom-modal-body">
               <h3 style="color: black; font-weight: bold; text-align: center;">Data Penerima Manfaat Bansos</h3>
               <hr style="margin-bottom: 20px;"/>
-
               <div class="data-row">
                 <span class="data-label">Nama:</span>
-                <span class="data-value">{{ formData.nama }}</span>
+                <span class="data-value">{{ modalData.nama }}</span>
               </div>
-
               <div class="data-row">
                 <span class="data-label">NIK:</span>
-                <span class="data-value">{{ formData.nik }}</span>
+                <span class="data-value">{{ modalData.nik }}</span>
               </div>
-
               <div class="data-row">
                 <span class="data-label">Nomor Kartu Keluarga:</span>
-                <span class="data-value">{{ formData.noKartuKeluarga }}</span>
+                <span class="data-value">{{ modalData.noKartuKeluarga }}</span>
               </div>
-
               <div class="data-row">
                 <span class="data-label">Foto KTP:</span>
                 <span class="data-value">-</span>
               </div>
-
               <div class="data-row">
                 <span class="data-label">Foto KK:</span>
                 <span class="data-value">-</span>
               </div>
-
               <div class="data-row">
                 <span class="data-label">Umur:</span>
-                <span class="data-value">{{ formData.umur }}</span>
+                <span class="data-value">{{ modalData.umur }}</span>
               </div>
-
               <div class="data-row">
                 <span class="data-label">Jenis Kelamin:</span>
-                <span class="data-value">{{ formData.jenisKelamin }}</span>
+                <span class="data-value">{{ modalData.jenisKelamin }}</span>
               </div>
-
               <div class="data-row">
                 <span class="data-label">Provinsi:</span>
-                <span class="data-value"></span>
+                <span class="data-value">{{ getNamaProvinsi(modalData.provinsi) }}</span>
               </div>
-
               <div class="data-row">
                 <span class="data-label">Kab/Kota</span>
-                <span class="data-value"></span>
+                <span class="data-value">{{ getNamaKabKota(modalData.kabKota) }}</span>
               </div>
-
               <div class="data-row">
                 <span class="data-label">Kecamatan</span>
-                <span class="data-value"></span>
+                <span class="data-value">{{ getNamaKecamatan(modalData.kecamatan) }}</span>
               </div>
-
               <div class="data-row">
                 <span class="data-label">Kelurahan/Desa</span>
-                <span class="data-value"></span>
+                <span class="data-value">{{ getNamaKelurahanDesa(modalData.kelurahanDesa) }}</span>
               </div>
-
               <div class="data-row">
                 <span class="data-label">Alamat:</span>
-                <span class="data-value">{{ formData.alamat }}</span>
+                <span class="data-value">{{ modalData.alamat }}</span>
               </div>
-
               <div class="data-row">
                 <span class="data-label">RT:</span>
-                <span class="data-value">{{ formData.rt}}</span>
+                <span class="data-value">{{ modalData.rt}}</span>
               </div>
-
               <div class="data-row">
                 <span class="data-label">RW:</span>
-                <span class="data-value">{{ formData.rw}}</span>
+                <span class="data-value">{{ modalData.rw}}</span>
               </div>
-
               <div class="data-row">
                 <span class="data-label">Penghasilan sebelum pandemi: </span>
-                <span class="data-value">{{ formData.penghasilanSebelumPandemi}}</span>
+                <span class="data-value">{{ modalData.penghasilanSebelumPandemi}}</span>
               </div>
-
               <div class="data-row">
                 <span class="data-label">Penghasilan setelah pandemi: </span>
-                <span class="data-value">{{ formData.penghasilanSetelahPandemi}}</span>
+                <span class="data-value">{{ modalData.penghasilanSetelahPandemi}}</span>
               </div>
-
               <div class="data-row">
                 <span class="data-label">Alasan membutuhkan bantuan:</span>
-                <span class="data-value"></span>
+                <span class="data-value">{{ modalData.alasanBantuan || modalData.alasanLainnya }}</span>
               </div>
-
             </div>
-
             <div class="custom-modal-footer">
               <button type="button" class="custom-btn btn-secondary" @click="closeModal">Close</button>
             </div>
@@ -258,6 +221,27 @@ export default {
       kelurahanDesaList: [], 
       submitting: false,
       showModal: false,
+      modalData: {
+        nama: '',
+        nik: null,
+        noKartuKeluarga: '',
+        fotoKTP: null,
+        fotoKK: null,
+        umur: null,
+        jenisKelamin: '',
+        alamat: '',
+        rt: null,
+        rw: null,
+        penghasilanSebelumPandemi: null,
+        penghasilanSetelahPandemi: null,
+        alasanBantuan: '',
+        alasanLainnya: '',
+        persetujuan: false,
+        provinsi: '', 
+        kabKota: '',
+        kecamatan: '',
+        kelurahanDesa: '',
+      },
     };
   },
   methods: {
@@ -270,6 +254,8 @@ export default {
         if (success) {
           console.log("Data berhasil dikirim:", this.formData);
           this.showModal = true;
+
+          this.modalData = { ...this.formData };
 
           this.formData = {
             nama: '',
@@ -298,6 +284,26 @@ export default {
       this.showModal = false;
     },
 
+    getNamaProvinsi(id) {
+      const provinsi = this.provinsiList.find(item => item.id === id);
+      return provinsi ? provinsi.name : '';
+    },
+
+    getNamaKabKota(id) {
+      const kabKota = this.kabKotaList.find(item => item.id === id);
+      return kabKota ? kabKota.name : '';
+    },
+
+    getNamaKecamatan(id) {
+      const kecamatan = this.kecamatanList.find(item => item.id === id);
+      return kecamatan ? kecamatan.name : '';
+    },
+
+    getNamaKelurahanDesa(id) {
+      const kelurahanDesa = this.kelurahanDesaList.find(item => item.id === id);
+      return kelurahanDesa ? kelurahanDesa.name : '';
+    },
+
     validateFile(event) {
       const file = event.target.files[0];
       if (file && file.size > 2 * 1024 * 1024) {
@@ -306,7 +312,7 @@ export default {
       }
     },
     loadProvinsi() {
-      axios.get('https://www.emsifa.com/api-wilayah-indonesia/api/provinces.json')
+      axios.get(`https://www.emsifa.com/api-wilayah-indonesia/api/provinces.json`)
         .then(response => {
           this.provinsiList = response.data;
         })
